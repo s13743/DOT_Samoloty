@@ -1,0 +1,50 @@
+﻿@model Samoloty.Models.Flight
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Flight</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Aircraft.Brand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aircraft.Brand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dest)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

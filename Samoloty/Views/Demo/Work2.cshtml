@@ -1,0 +1,20 @@
+﻿
+@using Samoloty.Security
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Work1</title>
+</head>
+<body>
+    <div>
+        Work 2
+        <br />
+        Welcome @SessionPersister.Username
+        <br />
+        <a href="@Url.Action("Logout", "Account")">Logout</a>
+    </div>
+</body>
+</html>
