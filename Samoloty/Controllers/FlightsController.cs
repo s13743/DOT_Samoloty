@@ -16,7 +16,7 @@ namespace Samoloty.Controllers
         private AircraftDBCtxt db = new AircraftDBCtxt();
 
         // GET: Flights
-        [AllowAnonymous]
+        [CustomAuthorize(Roles = "pilot,admin,superadmin")]
         public ActionResult Index()
         {
             var flights = db.Flights.Include(f => f.Aircraft);
@@ -24,7 +24,7 @@ namespace Samoloty.Controllers
         }
 
         // GET: Flights/Details/5
-        [CustomAuthorize(Roles = "pilot")]
+        [CustomAuthorize(Roles = "pilot,admin,superadmin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -67,7 +67,7 @@ namespace Samoloty.Controllers
         }
 
         // GET: Flights/Edit/5
-        [CustomAuthorize(Roles = "pilot,admin,superadmin")]
+        [CustomAuthorize(Roles = "admin,superadmin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -88,7 +88,7 @@ namespace Samoloty.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [CustomAuthorize(Roles = "pilot,admin,superadmin")]
+        [CustomAuthorize(Roles = "admin,superadmin")]
         public ActionResult Edit([Bind(Include = "Id,Date,dep,dest,AircraftID")] Flight flight)
         {
             if (ModelState.IsValid)

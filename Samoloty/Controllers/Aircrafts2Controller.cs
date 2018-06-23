@@ -23,6 +23,7 @@ namespace Samoloty.Controllers
         //}
 
         // GET: Aircrafts2/Details/5
+        [CustomAuthorize(Roles = "pilot,admin,superadmin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -83,7 +84,7 @@ namespace Samoloty.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [CustomAuthorize(Roles = "pilot,admin,superadmin")]
+        [CustomAuthorize(Roles = "admin,superadmin")]
         public ActionResult Edit([Bind(Include = "Id,Brand,Model,Price,PaxCapacity,Bought")] Aircraft aircraft)
         {
             if (ModelState.IsValid)
@@ -139,6 +140,7 @@ namespace Samoloty.Controllers
         //    return View(aircrafts.ToList());
         //}
 
+        [CustomAuthorize(Roles = "pilot,admin,superadmin")]
         public ActionResult Index(string sortowanie, SzukajSamolotu Model, int? page)
         {
             ViewBag.SortedBy = sortowanie;
